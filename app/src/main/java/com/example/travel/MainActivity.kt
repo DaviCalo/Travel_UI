@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -58,12 +59,16 @@ fun FirstScreen(){
             .fillMaxSize()
             .background(radial)
             .systemBarsPadding(),
-        verticalArrangement = Arrangement.Top,
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row(
-        ) {
-            Text(text = "Travel", fontFamily = minhaFonte, fontSize = 25.sp, fontWeight = FontWeight.Normal)
+        Row() {
+            Text(text = "Travel", fontFamily = minhaFonte, color = Color.White, fontSize = 40.sp, fontWeight = FontWeight.Normal)
+        }
+        Box(
+            
+        ){
+            Text(text = "Find Your Dream \n Destination With Us", color = Color.White, fontSize = 20.sp)
         }
     }
 }
