@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
@@ -170,6 +171,8 @@ fun  butonNav(){
 
 @Composable
 fun cards(){
+    val robotoMedium = FontFamily(Font(R.font.roboto_medium, FontWeight.Medium))
+    val robotoRegular =  FontFamily(Font(R.font.roboto, FontWeight.Medium))
     val widthCard = 380
     val heightCard = 250
     Row(
@@ -193,7 +196,39 @@ fun cards(){
                     )
             }
         ) {
-
+            Box(modifier = Modifier
+                .align(alignment = Alignment.BottomCenter)
+                .padding(0.dp,35.dp)
+                .height(60.dp)
+                .width(170.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color.Black))
+            {
+              Column(
+                  Modifier.padding(4.dp),
+                  horizontalAlignment = Alignment.CenterHorizontally,
+                  verticalArrangement = Arrangement.Center
+              ) {
+                  Text(text = "Mount Fuji, Tokyo", fontFamily = robotoMedium, fontSize = 16.sp, color = Color.White)
+                  Row(
+                      verticalAlignment = Alignment.Bottom,
+                      horizontalArrangement = Arrangement.SpaceBetween
+                  ) {
+                      Row(){
+                          Icon( painter = painterResource(id = R.drawable.loc),
+                              contentDescription = null,
+                              tint = Color(0xFFCAC8C8))
+                          Text(text = "Tokyo, Japan", fontFamily = robotoRegular, fontSize = 14.sp, color = Color(0xFFCAC8C8))
+                      }
+                      Row {
+                          Icon( painter = painterResource(id = R.drawable.star),
+                              contentDescription = null,
+                              tint = Color(0xFFCAC8C8))
+                          Text(text = "4.8", fontFamily = robotoRegular, fontSize = 14.sp, color = Color(0xFFCAC8C8))
+                      }
+                  }
+              }
+            }
         }
         Box(
             modifier = with (Modifier){
