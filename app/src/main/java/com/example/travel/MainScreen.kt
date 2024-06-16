@@ -70,8 +70,8 @@ fun MainScreen(){
     ) {
         topBar()
         inputPlaces()
-        Ima()
-        Img()
+        butonNav()
+        cards()
         navBar()
     }
 }
@@ -98,7 +98,7 @@ fun topBar(){
                 .width(50.dp)
                 .height(50.dp)
                 .clip(RoundedCornerShape(50))
-                .border(1.dp,Color.Gray, CircleShape),
+                .border(1.dp, Color.Gray, CircleShape),
             contentScale = ContentScale.Crop,
         )
     }
@@ -110,7 +110,7 @@ fun inputPlaces(){
     Row(
         Modifier
             .fillMaxWidth()
-            .padding(15.dp, 15.dp),
+            .padding(15.dp, 0.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
@@ -131,7 +131,7 @@ fun inputPlaces(){
 }
 
 @Composable
-fun Ima(){
+fun  butonNav(){
     val robotoMedium = FontFamily(Font(R.font.roboto_medium, FontWeight.Medium))
     val poppinsSemibold = FontFamily(Font(R.font.poppins_semibold, FontWeight.SemiBold))
     Column(
@@ -169,7 +169,7 @@ fun Ima(){
 }
 
 @Composable
-fun Img(){
+fun cards(){
     val widthCard = 380
     val heightCard = 250
     Row(
@@ -257,8 +257,9 @@ fun navBar(){
 @Composable
 fun pre(){
 ////    Ima()
-//    MainScreen()
+    MainScreen()
 //    Img()
 //    navBar()
-    topBar()
+//    topBar()
+//    inputPlaces()
 }
