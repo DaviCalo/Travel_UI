@@ -4,80 +4,62 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.rounded.Menu
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.VectorPainter
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.travel.ui.theme.TravelTheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            TravelTheme {
-                FirstScreen()
+            setContent {
+                TravelTheme {
+                    Scaffold() { innerPadding ->
+                        App()
+                    }
+                }
             }
         }
     }
 }
 
 @Composable
-fun FirstScreen(){
-    val radial =  Brush.verticalGradient(listOf(Color(0xFF0172B2), Color(0xFF001645)))
-    val minhaFonte = FontFamily(
-        Font(R.font.lobster, FontWeight.Normal)
-    )
+fun App(modifier:Modifier = Modifier) {
+    Surface (
+        modifier = modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.onSurface
+    ){
+        val navController = rememberNavController()
+        NavHost(navController = navController, startDestination = "opening screen") {
+            composable("opening screen") {
+                OpeningScreen(
+                    OnNextTela = {
+                        navController.navigate("signUp")
+                    }
+                )
+            }
+            composable("MainScreen"){
+                MainScreen()
+            }
+        }
 
-    Column(
-        Modifier
-            .fillMaxSize()
-            .background(radial)
-            .systemBarsPadding(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row() {
-            Text(text = "Travel", fontFamily = minhaFonte, color = Color.White, fontSize = 40.sp, fontWeight = FontWeight.Normal)
-        }
-        Box(
-            
-        ){
-            Text(text = "Find Your Dream \n Destination With Us", color = Color.White, fontSize = 20.sp, textAlign = TextAlign.Center, modifier = Modifier.width(250.dp))
-        }
     }
+
 }
 
-
-@Preview(showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
-fun pre(){
-    FirstScreen()
+fun AppPreview() {
+    TravelTheme {
+//        App()
+    }
 }
