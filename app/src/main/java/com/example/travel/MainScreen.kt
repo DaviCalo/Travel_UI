@@ -64,7 +64,7 @@ fun MainScreen(){
         Modifier
             .fillMaxSize()
             .systemBarsPadding()
-            .padding(0.dp, 15.dp, 0.dp, 0.dp)
+            .padding(0.dp, 0.dp, 0.dp, 0.dp)
             .background(Color(0xFFFFFFFF)),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.Start
@@ -99,8 +99,8 @@ fun topBar(){
                 .width(50.dp)
                 .height(50.dp)
                 .clip(RoundedCornerShape(50))
-                .border(1.dp, Color.Gray, CircleShape),
-            contentScale = ContentScale.Crop,
+//                .border(1.dp, Color.Gray, CircleShape),
+                ,contentScale = ContentScale.Crop,
         )
     }
 }
@@ -157,7 +157,7 @@ fun  butonNav(){
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Button(onClick = { /*TODO*/ },colors = ButtonDefaults.buttonColors(Color(0xFF2F2F2F))) {
-                Text(text = "Most Viewed", fontFamily = robotoMedium, color = Color.White, fontSize = 16.sp)
+                Text(text = "Most Viewed", fontFamily = robotoMedium, color = Color.White, fontSize = 15.sp)
             }
             Button(onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors(Color(0xFFFBFBFB))) {
                 Text(text = "Nearby", fontFamily = robotoMedium, color = Color.Gray, fontSize = 15.sp)
@@ -262,8 +262,8 @@ fun cards(){
 @Composable
 fun navBar(){
     Row(
-        Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.Bottom,
+        Modifier.fillMaxWidth().padding(0.dp,0.dp,0.dp,10.dp),
+        verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Absolute.SpaceAround
     ) {
         Icon(

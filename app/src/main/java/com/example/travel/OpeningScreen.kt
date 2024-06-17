@@ -57,12 +57,3 @@ fun OpeningScreen(OnNextTela: () -> Unit){
         }
     }
 }
-
-@Preview
-@Composable
-fun asd(){
-    val navController = rememberNavController()
-    OpeningScreen(OnNextTela = {
-        navController.navigate("signUp")
-    })
-}

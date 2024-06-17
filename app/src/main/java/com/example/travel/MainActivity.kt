@@ -23,9 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             setContent {
                 TravelTheme {
-                    Scaffold() { innerPadding ->
-                        App()
-                    }
+                   App()
                 }
             }
         }
@@ -33,9 +31,9 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun App(modifier:Modifier = Modifier) {
+fun App() {
     Surface (
-        modifier = modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.onSurface
     ){
         val navController = rememberNavController()
@@ -43,7 +41,7 @@ fun App(modifier:Modifier = Modifier) {
             composable("opening screen") {
                 OpeningScreen(
                     OnNextTela = {
-                        navController.navigate("signUp")
+                        navController.navigate("MainScreen")
                     }
                 )
             }
